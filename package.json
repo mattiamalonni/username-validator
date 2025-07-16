@@ -1,0 +1,39 @@
+{
+  "name": "username-validator",
+  "description": "A simple username validation library that checks for length, allowed characters, and custom blacklists.",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "backend",
+    "frontend",
+    "username",
+    "validation",
+    "validator",
+    "blacklist",
+    "allowed characters"
+  ],
+  "author": "Mattia Malonni",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattiamalonni/username-validator"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
