@@ -1,5 +1,9 @@
 # Username Validator
 
+![npm](https://img.shields.io/npm/v/username-validator)
+![License: MIT](https://img.shields.io/npm/l/username-validator)
+![Test](https://img.shields.io/github/actions/workflow/status/mattiamalonni/username-validator/test.yml?branch=main)
+
 A robust TypeScript library for validating usernames with customizable rules, blacklist, and profanity filtering.
 
 ## Features
