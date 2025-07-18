@@ -2,6 +2,11 @@ import { describe, it, expect } from "vitest";
 import { validate } from "../src";
 
 describe("UsernameValidator", () => {
+  it("should normalize the username", () => {
+    const result = validate("  U-ser_Na⚡️me!  ");
+    expect(result.normalized).toBe("username");
+  });
+
   it("should trim the username", () => {
     const result = validate("  username  ");
     expect(result.username).toBe("username");

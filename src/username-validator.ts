@@ -87,6 +87,9 @@ export class UsernameValidator {
 
     const errors: ValidationError[] = [];
 
+    // Remove all special characters except numbers and letters and convert to lowercase
+    const normalized = username.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
     if (this.trim) username = username.trim();
     if (this.convertToLowercase) username = username.toLowerCase();
     if (this.convertToUppercase) username = username.toUpperCase();
@@ -107,6 +110,6 @@ export class UsernameValidator {
       errors.push({ code: "invalidCharacters", message: `Username contains invalid characters.` });
     }
 
-    return { username, isValid: errors.length === 0, errors };
+    return { username, normalized, isValid: errors.length === 0, errors };
   }
 }

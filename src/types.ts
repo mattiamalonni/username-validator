@@ -15,6 +15,7 @@ export type ValidationError = {
 
 export type ValidationPayload = {
   username: string;
+  normalized: string;
   isValid: boolean;
   errors: { code: string; message: string }[];
 };

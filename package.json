@@ -1,7 +1,7 @@
 {
   "name": "username-validator",
   "description": "A simple username validation library that checks for length, allowed characters, and custom blacklists.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
