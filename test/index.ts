@@ -37,7 +37,7 @@ describe("UsernameValidator", () => {
   it("should fail because the username contains invalid characters", () => {
     const result = validate("meh@regarding");
     expect(result.isValid).toBe(false);
-    expect(result.errors).toContainEqual({ code: "invalidCharacters", message: "Username contains invalid characters." });
+    expect(result.errors).toContainEqual({ code: "invalid", message: "Username contains invalid characters." });
   });
 
   it("should fail because the username contains a blacklisted word", () => {

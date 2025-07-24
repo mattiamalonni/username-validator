@@ -1,13 +1,13 @@
 import { UsernameValidatorOptions, ValidationError, ValidationPayload } from "./types";
 
-import blacklist from "./blacklist.json";
-import profanity from "./profanity.json";
+import reserved from "./blacklist/reserved.json";
+import profanity from "./blacklist/profanity.json";
 
 /**
  * Default options for the UsernameValidator.
  * These can be overridden by passing a configuration object to the constructor.
  */
-export const defaultBlacklist = [...blacklist, ...profanity];
+export const defaultBlacklist = [...reserved, ...profanity];
 
 /**
  * Default options for the UsernameValidator.
@@ -53,24 +53,12 @@ export class UsernameValidator {
    */
   private getAllowedCharactersRegex(): RegExp {
     const allowedChars = [];
-    if (this.allowedCharacters!.includes("letters")) {
-      allowedChars.push("a-zA-Z");
-    }
-    if (this.allowedCharacters!.includes("numbers")) {
-      allowedChars.push("0-9");
-    }
-    if (this.allowedCharacters!.includes("underscores")) {
-      allowedChars.push("_");
-    }
-    if (this.allowedCharacters!.includes("dashes")) {
-      allowedChars.push("-");
-    }
-    if (this.allowedCharacters!.includes("spaces")) {
-      allowedChars.push(" ");
-    }
-    if (this.allowedCharacters!.includes("emojis")) {
-      allowedChars.push("\\p{Emoji}");
-    }
+    if (this.allowedCharacters!.includes("letters")) allowedChars.push("a-zA-Z");
+    if (this.allowedCharacters!.includes("numbers")) allowedChars.push("0-9");
+    if (this.allowedCharacters!.includes("underscores")) allowedChars.push("_");
+    if (this.allowedCharacters!.includes("dashes")) allowedChars.push("-");
+    if (this.allowedCharacters!.includes("spaces")) allowedChars.push(" ");
+    if (this.allowedCharacters!.includes("emojis")) allowedChars.push("\\p{Emoji}");
     return new RegExp(`^[${allowedChars.join("")}]+$`, "u");
   }
 
@@ -107,7 +95,7 @@ export class UsernameValidator {
 
     const allowedRegex = this.getAllowedCharactersRegex();
     if (!allowedRegex.test(username)) {
-      errors.push({ code: "invalidCharacters", message: `Username contains invalid characters.` });
+      errors.push({ code: "invalid", message: `Username contains invalid characters.` });
     }
 
     return { username, normalized, isValid: errors.length === 0, errors };

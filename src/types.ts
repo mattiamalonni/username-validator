@@ -9,7 +9,7 @@ export type UsernameValidatorOptions = {
 };
 
 export type ValidationError = {
-  code: "minLength" | "maxLength" | "reservedUsername" | "blacklist" | "invalidCharacters";
+  code: "minLength" | "maxLength" | "blacklist" | "invalid";
   message: string;
 };
 
